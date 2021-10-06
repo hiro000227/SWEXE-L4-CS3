@@ -6,6 +6,7 @@ def main
      render 'login'
  end
 end
+
 def login
  if params[:uid] == 'kindai' and params[:pass] == 'sanriko'
     session[:login_uid] = params[:uid]
@@ -14,4 +15,9 @@ def login
     render 'login_failed'
     end
   end
-end
+  
+  def logout
+   session.delete(:login_uid)
+   redirect_to root_path
+  end
+ end
